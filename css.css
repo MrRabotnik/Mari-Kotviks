@@ -9,6 +9,16 @@ body{
     background: url("Images/background.jpg");
     background-size: cover;
 }
+#preloader{
+    background: white;
+    position: absolute;
+    width: 100%;
+    height: 100vh;
+    z-index: 11;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 #loading_page{
     width: 100%;
     height: 100vh;
@@ -58,11 +68,12 @@ body{
     z-index: 2;
     transform: translate(-50%);
     font-size: 1.5vw;
+    transition: 0.3s;
 }
 .menu_btns:hover{
     background: rgb(24, 24, 140);
     color: white;
-    cursor: not-allowed;
+    cursor: pointer;
 }
 #shop{
     top: 20vw;
@@ -127,6 +138,13 @@ body{
     position: absolute;
     right: 10%;
     top: 40%;
+    animation: rotate 20s linear infinite;
+}
+#astronaut_cat_4{
+    width: 10vw;
+    position: absolute;
+    right: 50%;
+    top: 20%;
     animation: rotate 20s linear infinite;
 }
 #cat_gif{
@@ -230,6 +248,9 @@ body{
     color: white;
 }
 
+
+
+
 #inventory_section{
     width: 100%;
     height: 100vh;
@@ -238,13 +259,25 @@ body{
     background: url("Images/inventory_background.jpg");
     background-size: 100% 100%;
 }
+
+
+
+
+
 #settings_section{
-    width: 100%;
-    height: 100vh;
+    width: 40%;
+    height: 80vh;
     display: none;
-    z-index: 0;
-    background: url("Images/shop_background.jpg");
+    z-index: 10;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    background: white;
+    border-radius: 3vw;
 }
+
+
 .return{
     position: absolute;
     left: 3vw;
@@ -257,6 +290,9 @@ body{
     transform: scale(1.2);
     animation: prev_btn_movement 2s ease-in-out infinite;
 }
+
+
+
 
 #first_level{
     width: 100%;

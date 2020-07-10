@@ -3,18 +3,23 @@ let WH = $(window).height()
 let X1 = Math.floor(Math.random() * WW - ($("#astronaut_cat").width() + 50) + 50)
 let X2 = Math.floor(Math.random() * WW - ($("#astronaut_cat_2").width() + 50) + 50)
 let X3 = Math.floor(Math.random() * WW - ($("#astronaut_cat_3").width() + 50) + 50)
+let X4 = Math.floor(Math.random() * WW - ($("#astronaut_cat_4").width() + 50) + 50)
 let Y1 = Math.floor(Math.random() * WH - ($("#astronaut_cat").height() + 50) + 50)
 let Y2 = Math.floor(Math.random() * WH - ($("#astronaut_cat_2").height() + 50) + 50)
 let Y3 = Math.floor(Math.random() * WH - ($("#astronaut_cat_3").height() + 50) + 50)
+let Y4 = Math.floor(Math.random() * WH - ($("#astronaut_cat_4").height() + 50) + 50)
 let hittedX1 = false
 let hittedY1 = false
 let hittedX2 = false
 let hittedY2 = false
 let hittedX3 = false
 let hittedY3 = false
+let hittedX4 = false
+let hittedY4 = false
 let Move1 = setInterval(move1,50)
 let Move2 = setInterval(move2,50)
 let Move3 = setInterval(move3,50)
+let Move4 = setInterval(move4,50)
 let Margat = setInterval(margat,2500)
 let Walking = setInterval(walking,40000)
 
@@ -28,7 +33,7 @@ margat()
 function walking(){
     $("#cat_gif").animate({left:"90%"},20000)
     setTimeout(() => {$("#cat_gif").css({transform:"rotateY(180deg)"})},20000)
-    $("#cat_gif").animate({left:"0%"},20000)
+    setTimeout(() => {$("#cat_gif").animate({left:"0%"},20000)},20000)
     setTimeout(() => {$("#cat_gif").css({transform:"rotateY(0deg)"})},40000)
 }
 walking()
@@ -111,11 +116,37 @@ function move3(){
     $("#astronaut_cat_3").css({left : X3,top : Y3})
 }
 
+function move4(){
+    if(X4 + $("#astronaut_cat_4").width() >= WW - 1){
+        X4--
+        hittedX4 = false
+    }else if(X4 <= 1){
+        X4++
+        hittedX4 = true
+    }else if(!hittedX4){
+        X4--
+    }else if(hittedX4){
+        X4++
+    }
+    if(Y4 + $("#astronaut_cat_4").height() >= WH - 1){
+        Y4--
+        hittedY4 = false
+    }else if(Y4 <= 1){
+        Y4++
+        hittedY4 = true
+    }else if(!hittedY4){
+        Y4--
+    }else if(hittedY4){
+        Y4++
+    }
+    $("#astronaut_cat_4").css({left : X4,top : Y4})
+}
+
 function entering_game(e){
     if(e.which == 13){
-        $("#loading_page").css({transform:"scale(2)",transition: "2s"})
-        $("#loading_page").animate({top:"-200px",opacity:0},1500)
-        setTimeout(() => {$("#loading_page").css("display","none")},3000)
+        $("#loading_page").css({transform:"scale(2)",transition: "1.5s"})
+        $("#loading_page").animate({top:"-200px",opacity:0},1000)
+        setTimeout(() => {$("#loading_page").css("display","none")},2500)
         clearInterval(Walking)
         clearInterval(Margat)
         setTimeout(() => {$("#first_level").fadeIn(1000)},2000)
@@ -123,25 +154,26 @@ function entering_game(e){
 }
 
 function zooming(menu_btn){
-    $("#loading_page").css({transform:"scale(2)",transition: "2s"})
-    $("#loading_page").animate({opacity:0},1000)
-    setTimeout(() => {$("#loading_page").css("display","none")},2000)
+    $("#loading_page").css({transform:"scale(2)",transition: "1s"})
+    $("#loading_page").animate({opacity:0},500)
+    setTimeout(() => {$("#loading_page").css("display","none")},1000)
     clearInterval(Walking)
     clearInterval(Margat)
-    setTimeout(() => {menu_btn.fadeIn(1000)},2000)
+    setTimeout(() => {menu_btn.fadeIn(1000)},1000)
 }
 
 function return_to_menu(){
     $(this).parent().fadeOut("slow");
     $("#loading_page").css("display","block");
-    $("#loading_page").animate({opacity:1},1500)
-    $("#loading_page").css({transform:"scale(1)",transition: "2s"})
+    $("#loading_page").animate({opacity:1},500)
+    $("#loading_page").css({transform:"scale(1)",transition: "1s"})
     Margat = setInterval(margat,2500)
     Walking = setInterval(walking,40000)
 }
 
 
 $(document).keypress(entering_game)
+$(document).ready(setTimeout($("#preloader").fadeOut(3000)),2000)
 $("#shop").click(()=>{zooming($('#shop_section'))})
 $("#inventory").click(()=>{zooming($('#inventory_section'))})
 $("#settings").click(()=>{zooming($('#settings_section'))})
