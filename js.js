@@ -3,7 +3,7 @@ let Move1 = setInterval(move1,50)
 let Move2 = setInterval(move2,50)
 let Move3 = setInterval(move3,50)
 let Walking = setInterval(walking,40000)
-let X1 = Math.floor($("#astronaut_cat").offset().left)
+let X1 = Math.floor(Math.random() * WW - $("#astronaut_cat").width())
 let X2 = Math.floor($("#astronaut_cat_2").offset().left)
 let X3 = Math.floor($("#astronaut_cat_3").offset().left)
 let Y1 = Math.floor($("#astronaut_cat").offset().top)
@@ -130,9 +130,18 @@ function zooming(menu_btn){
     setTimeout(() => {menu_btn.fadeIn(1000)},2000)
 }
 
+function return_to_menu(){
+    $(this).parent().fadeOut("slow");
+    $("#loading_page").css("display","block");
+    $("#loading_page").animate({opacity:1},1500)
+    $("#loading_page").css({transform:"scale(1)",transition: "2s"})
+    Margat = setInterval(margat,2500)
+    Walking = setInterval(walking,40000)
+}
 
 
 $(document).keypress(entering_game)
 $("#shop").click(()=>{zooming($('#shop_section'))})
 $("#inventory").click(()=>{zooming($('#inventory_section'))})
 $("#settings").click(()=>{zooming($('#settings_section'))})
+$(".return").click(return_to_menu)
