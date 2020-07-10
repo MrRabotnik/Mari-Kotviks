@@ -1,22 +1,23 @@
-let Margat = setInterval(margat,2500)
-let Move1 = setInterval(move1,50)
-let Move2 = setInterval(move2,50)
-let Move3 = setInterval(move3,50)
-let Walking = setInterval(walking,40000)
-let X1 = Math.floor(Math.random() * WW - $("#astronaut_cat").width())
-let X2 = Math.floor($("#astronaut_cat_2").offset().left)
-let X3 = Math.floor($("#astronaut_cat_3").offset().left)
-let Y1 = Math.floor($("#astronaut_cat").offset().top)
-let Y2 = Math.floor($("#astronaut_cat_2").offset().top)
-let Y3 = Math.floor($("#astronaut_cat_3").offset().top)
 let WW = $(window).width()
 let WH = $(window).height()
+let X1 = Math.floor(Math.random() * WW - ($("#astronaut_cat").width() + 50) + 50)
+let X2 = Math.floor(Math.random() * WW - ($("#astronaut_cat_2").width() + 50) + 50)
+let X3 = Math.floor(Math.random() * WW - ($("#astronaut_cat_3").width() + 50) + 50)
+let Y1 = Math.floor(Math.random() * WH - ($("#astronaut_cat").height() + 50) + 50)
+let Y2 = Math.floor(Math.random() * WH - ($("#astronaut_cat_2").height() + 50) + 50)
+let Y3 = Math.floor(Math.random() * WH - ($("#astronaut_cat_3").height() + 50) + 50)
 let hittedX1 = false
 let hittedY1 = false
 let hittedX2 = false
 let hittedY2 = false
 let hittedX3 = false
 let hittedY3 = false
+let Move1 = setInterval(move1,50)
+let Move2 = setInterval(move2,50)
+let Move3 = setInterval(move3,50)
+let Margat = setInterval(margat,2500)
+let Walking = setInterval(walking,40000)
+
 
 function margat(){
     $("#press_to_enter").fadeOut(1500)
@@ -123,8 +124,8 @@ function entering_game(e){
 
 function zooming(menu_btn){
     $("#loading_page").css({transform:"scale(2)",transition: "2s"})
-    $("#loading_page").animate({opacity:0},1500)
-    setTimeout(() => {$("#loading_page").css("display","none")},3000)
+    $("#loading_page").animate({opacity:0},1000)
+    setTimeout(() => {$("#loading_page").css("display","none")},2000)
     clearInterval(Walking)
     clearInterval(Margat)
     setTimeout(() => {menu_btn.fadeIn(1000)},2000)
