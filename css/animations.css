@@ -1,0 +1,64 @@
+@keyframes chilling_cat_near_sun{
+    10%{
+        top: 4%;
+        right: 8%;
+    }
+    20%{
+        top: 8%;
+        right: 6%;
+    }
+    30%{
+        top: 12%;
+        right: 4%;
+    }
+    40%{
+        top: 16%;
+        right: 2%;
+    }
+    50%{
+        top: 20%;
+        right: 0%;
+    }
+    60%{
+        top: 16%;
+        right: 2%;
+    }
+    70%{
+        top: 12%;
+        right: 4%;
+    }
+    80%{
+        top: 8%;
+        right: 6%;
+    }
+    90%{
+        top: 4%;
+        right: 8%;
+    }
+    100%{
+        top: 0%;
+        right: 10%;
+    }
+}
+
+@keyframes prev_btn_movement{
+    0%{
+        transform: rotate(15deg)
+    }
+    50%{
+        transform: rotate(-15deg);
+    }
+    100%{
+        transform: rotate(15deg)
+    }
+}
+@keyframes rotate{
+    100%{
+        transform: rotate(360deg);
+    }
+}
+@keyframes rotateRev{
+    100%{
+        transform: rotate(-360deg);
+    }
+}

@@ -4,16 +4,45 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Mari Kotvik's Adventures</title>
         <link rel="shortcut icon" href="Images/favicon.png" type="image/x-icon">
-        <link rel="stylesheet" href="animations.css">
-        <link rel="stylesheet" href="css.css">
+        <link rel="stylesheet" href="css/animations.css">
+        <link rel="stylesheet" href="css/main.css">
         <link href="https://fonts.googleapis.com/css2?family=Galada&family=Grenze+Gotisch:wght@200&family=Montserrat+Subrayada&family=Open+Sans&family=Work+Sans&display=swap" rel="stylesheet">
     </head>
     <body>
         <!-- Preloader -->
-        <div id="preloader"><img src="Images/preloader.gif" width="10%"></div>
+        <!-- <div id="preloader"><img src="Images/preloader.gif" width="15%"></div> -->
 
         <!-- Settings Pop Up -->
-        <div id="settings_section"></div>
+        <div id="settings_section">
+            <div id="settings_closing">&times;</div>
+            <div class="change_name_settings_row settings_row">
+                <img src="Images/edit_icon.png" width="5%"> 
+                <input type="text" value="Your Name" placeholder="Your Name">
+            </div>
+            <div class="settings_row">
+                <div class="audio_settings_box">
+                    <img src="Images/music_icon.png" width="auto" height="100%">
+                    <div class="audio_settings_switch on music">
+                        <div class="on_off_btn"></div>
+                    </div>
+                </div>
+                <div class="settings_buttons" id="login">Login</div>
+            </div>
+            <div class="settings_row">
+                <div class="audio_settings_box">
+                    <img src="Images/sfx_icon.png" width="auto" height="90%">
+                    <div class="audio_settings_switch on sfx">
+                        <div class="on_off_btn"></div>
+                    </div>
+                </div>
+                <div class="settings_buttons" id="languages">Language</div>
+            </div>
+            <div class="settings_row">
+                <div class="settings_buttons" style="margin-left: -1%;" id="controls">Controls</div>
+                <div class="settings_buttons" style="margin-right: -5%;" id="fullscreen"><img src="Images/full-screen.png" width="10%"> Fullscreen</div>
+            </div>
+            <div id="too_long_name" class="pop_up">Too Long Name</br>Max 10 chars</div>
+        </div>
 
         <!-- Loading Page -->
         <main id="loading_page">
@@ -30,67 +59,79 @@
             <img src="Images/astronaut_cat_2.png" id="astronaut_cat_2">
             <img src="Images/astronaut_cat_3.png" id="astronaut_cat_3">
             <img src="Images/astronaut_cat_4.png" id="astronaut_cat_4">
-            <img src="Images/cat-png-gif.gif" id="cat_gif">
             <img src="Images/giphy.gif" id="guitar_playing_cat">
+            <img src="Images/Mewtwo.png" id="mewtwo">
             <img src="Images/animated-gif-transparent-cat-free-download-cat-png-gif-258_232.gif" id="dancing_cat">
-            <audio id="audio" controls src="Sounds/background_song.mp3"></audio>
+            <audio id="audio" src="Sounds/background_song.mp3" loop></audio>
+            <div class="profile">
+                <div class="avatar">
+                    <img src="Images/Shop Items/item5.png">
+                </div>
+                <div class="stats">
+                    <div class="name">Your Name </div>
+                    <label for="exp">Level 1</label>
+                    <progress id="exp" class="experience" value="32" max="100">32%</progress>
+                    <label for="exp">32/100 XP</label>
+                </div>
+            </div>
         </main>
 
+        <!-- Levels -->
         <section id="first_level">
-
+            <div class="return_container">
+                <img src="Images/previous.png" title="Go Back To Menu" width="auto" height="100%">
+            </div>
         </section>
 
+        <!-- Shop Section -->
         <section id="shop_section">
-            <img src="Images/previous.png" title="Go Back To Menu" class="return" width="4%">
+            <div class="return_container">
+                <img src="Images/previous.png" title="Go Back To Menu" width="auto" height="100%">
+            </div>
             <div class="coins_container" title="Currency">
+                <p id="money">15000</p>
+                <img src="Images/cat_coin.png" width="auto" height="80%">
+            </div>
+            <div id="not_enough_money" class="pop_up">Not Enough Money</div>
+            <div class="are_you_sure_container"></div>
+            <div class="are_you_sure_box">
+                <h1>Are You Sure?</h1>
+                <div class="aswers_box">
+                    <div class="answer_btns" id="yes">Yes</div>
+                    <div class="answer_btns" id="no">No</div>
+                </div>
+            </div>
+            <div id="shop_items_container">
+                <div id="shop_items_wrapper"></div>
+            </div>
+            <div class="shop_pages_container">
+
+            </div>
+            <div class="avatar_preview">
+                <img src="Images/Shop Items/item5.png">
+            </div>
+        </section>
+
+        <!-- Inventory Section  -->
+        <section id="inventory_section">
+            <div class="return_container">
+                <img src="Images/previous.png" title="Go Back To Menu" width="auto" height="100%">
+            </div>
+            <div class="coins_container" title="Currency" style="background: white;color: #222;">
                 <p>777</p>
                 <img src="Images/cat_coin.png" width="auto" height="80%">
             </div>
-            <div id="shop_items_container">
-                <div class="shop_items_box">
-                    <img src="Images/Shop Items/item1.png">
-                    <div class="price">777 <img src="Images/cat_coin.png"></div>
-                </div>
-                <div class="shop_items_box">
-                    <img src="Images/Shop Items/item2.png">
-                    <div class="price">777 <img src="Images/cat_coin.png"></div>
-                </div>
-                <div class="shop_items_box">
-                    <img src="Images/Shop Items/item3.png">
-                    <div class="price">777 <img src="Images/cat_coin.png"></div>
-                </div>
-                <div class="shop_items_box">
-                    <img src="Images/Shop Items/item4.png">
-                    <div class="price">777 <img src="Images/cat_coin.png"></div>
-                </div>
-                <div class="shop_items_box">
-                    <img src="Images/Shop Items/item5.png">
-                    <div class="price">777 <img src="Images/cat_coin.png"></div>
-                </div>
-                <div class="shop_items_box">
-                    <img src="Images/Shop Items/item5.png">
-                    <div class="price">777 <img src="Images/cat_coin.png"></div>
-                </div>
-                <div class="shop_items_box">
-                    <img src="Images/Shop Items/item5.png">
-                    <div class="price">777 <img src="Images/cat_coin.png"></div>
-                </div>
-                <div class="shop_items_box">
-                    <img src="Images/Shop Items/item5.png">
-                    <div class="price">777 <img src="Images/cat_coin.png"></div>
-                </div>
+            <div id="inventory_items_container">
+                <div id="inventory_items_wrapper"></div>
+            </div>
+            <div class="shop_pages_container"></div>
+            <div class="avatar_preview">
+                <img src="Images/Shop Items/item5.png">
             </div>
         </section>
 
-        <section id="inventory_section">
-            <img src="Images/previous.png" title="Go Back To Menu" class="return" width="4%">
-        </section>
 
-        <section id="settings_section">
-
-        </section>
-
-        <script src="jquery.js"></script>
-        <script src="js.js"></script>
+        <script src="javascript/jquery.js"></script>
+        <script src="javascript/main.js"></script>
     </body>
 </html>
