@@ -42,6 +42,7 @@
                 <div class="settings_buttons" style="margin-right: -5%;" id="fullscreen"><img src="Images/full-screen.png" width="10%"> Fullscreen</div>
             </div>
             <div id="too_long_name" class="pop_up">Too Long Name</br>Max 10 chars</div>
+            <div id="too_short_name" class="pop_up">Too Short Name</br>Min 2 chars</div>
         </div>
 
         <!-- Loading Page -->
@@ -50,7 +51,7 @@
             <h4 id="press_to_enter">Press <kbd>ENTER</kbd> to start</h4>
             <div class="menu_btns" id="shop">Shop</div>
             <div class="menu_btns" id="inventory">Inventory</div>
-            <div class="menu_btns" id="settings">Settings</div>
+            <div class="menu_btns" class="settings">Settings</div>
             <img src="Images/earth.png" id="earth">
             <img src="Images/sun.gif" id="sun">
             <img src="Images/moon.png" id="moon">
@@ -65,7 +66,7 @@
             <audio id="audio" src="Sounds/background_song.mp3" loop></audio>
             <div class="profile">
                 <div class="avatar">
-                    <img src="Images/Shop Items/item5.png">
+                    <img src="Images/Shop Items/avatar.png">
                 </div>
                 <div class="stats">
                     <div class="name">Your Name </div>
@@ -77,9 +78,24 @@
         </main>
 
         <!-- Levels -->
-        <section id="first_level">
+        <section id="levels_section">
             <div class="return_container">
                 <img src="Images/previous.png" title="Go Back To Menu" width="auto" height="100%">
+            </div>
+            <div class="settings settings_btn">
+                <img src="Images/Levels/settings_icon.png" title="Settings" width="auto" height="100%">
+            </div>
+            <img src="Images/animated-gif-transparent-cat-free-download-cat-png-gif-258_232.gif" id="dancing_cat_in_levels_section">
+            <div class="profile">
+                <div class="avatar">
+                    <img src="Images/Shop Items/avatar.png">
+                </div>
+                <div class="stats">
+                    <div class="name">Your Name </div>
+                    <label for="exp">Level 1</label>
+                    <progress id="exp" class="experience" value="32" max="100">32%</progress>
+                    <label for="exp">32/100 XP</label>
+                </div>
             </div>
         </section>
 
@@ -89,7 +105,7 @@
                 <img src="Images/previous.png" title="Go Back To Menu" width="auto" height="100%">
             </div>
             <div class="coins_container" title="Currency">
-                <p id="money">15000</p>
+                <p id="money">540</p>
                 <img src="Images/cat_coin.png" width="auto" height="80%">
             </div>
             <div id="not_enough_money" class="pop_up">Not Enough Money</div>
@@ -108,7 +124,7 @@
 
             </div>
             <div class="avatar_preview">
-                <img src="Images/Shop Items/item5.png">
+                <img src="Images/Shop Items/avatar.png">
             </div>
         </section>
 

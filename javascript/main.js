@@ -15,8 +15,8 @@ let Move3 = setInterval(move3,50);
 let Move4 = setInterval(move4,50);
 let Margat = setInterval(margat,2500);
 let currentMoneyCount = Number($("#money").text());
-let shopItemsImages = ["item1","item2","item3","item4","item5","item5","item5","item5", "item5", "item5", "item5", "item5","item5", "item5", "item5", "item5", "item5","item5", "item5", "item5", "item5", "item5","item5", "item5", "item5", "item5",];
-let shopeItemsPrice = [50, 100, 200, 300, 1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000,];
+let shopItems = {50: "item1.png", 100: "item2.png", 200: "item3.png", 300: "item4.png", 500: "item5.png", 550: "item6.png", 1000: "item7.gif", 560: "item8.png", 850: "item9.gif", 450: "item10.png", 600: "item11.gif", 650: "item12.png", 680: "item13.png", 700: "item14.png", 400: "item15.png", 1100: "item16.png",}
+let shopeItemsPrice = Object.keys(shopItems)
 let prices,currentAvatarPreview,currentBuyingItemPriceBox,currentBuyingItemPrice,currentBuyingItem;
 let nothingClicked = true
 let currentAvatarEquiped;
@@ -24,15 +24,15 @@ let currentAvatarEquiped;
 function initialize(){
     addingShopItems()
     margat()
-    $(".shop_pages_container").html(shopItemsImages.length + " items")
+    $(".shop_pages_container").html(shopeItemsPrice.length + " items")
 }
 initialize()
 
 function addingShopItems(){
-    for(let i = 0; i < shopItemsImages.length; i++){
+    for(let i of shopeItemsPrice){
         let currentItem =   `<div class="shop_items_box">
-                                <img src="Images/Shop Items/${shopItemsImages[i]}.png">
-                                <div class="price"><p style="color:${currentMoneyCount > shopeItemsPrice[i] ? "green" : "red"}">${shopeItemsPrice[i]}</p><img src="Images/cat_coin.png"></div>
+                                <img src="Images/Shop Items/${shopItems[i]}">
+                                <div class="price"><p style="color:${currentMoneyCount > Number(i) ? "green" : "red"}">${i}</p><img src="Images/cat_coin.png"></div>
                             </div>`
         $("#shop_items_wrapper").append(currentItem)
     }
@@ -156,6 +156,17 @@ function zooming(menu_btn){
     setTimeout(() => {menu_btn.fadeIn(1000)},1000)
 }
 
+function entering_levels_section(e){
+    if(!nothingClicked) return
+    if(e.which == 13){
+        $("#loading_page").css({transform:"scale(2)",transition: "1s"})
+        $("#loading_page").animate({opacity:0},500)
+        setTimeout(() => {$("#loading_page").css("display","none")},1000)
+        clearInterval(Margat)
+        setTimeout(() => {$("#levels_section").fadeIn(1000)},1000)
+    }
+}
+
 function return_to_menu(){
     $(this).parent().fadeOut("slow");
     $("#loading_page").css("display","block");
@@ -180,10 +191,6 @@ function on_off_switch(){
         }
     }
 }
-
-// function changing_shop_page(id){
-
-// }
 
 function price(){
     if($(this).html() == "Owned") return
@@ -224,6 +231,7 @@ function buyingItems(){
     $(currentBuyingItem).css("background","whitesmoke");
     $(currentBuyingItem).children(".price").html("Equip")
     $(currentBuyingItem).children(".price").addClass("equip_item")
+    // $("#shop_items_wrapper").html("")
 }
 
 function preview_avatar(){
@@ -241,9 +249,13 @@ function change_name(e){
     if(e.which == 13){
         let name = $(".change_name_settings_row input").val()
         if(name.length > 10){
-            $(".pop_up").fadeIn()
+            $("#too_long_name").fadeIn()
             $("#too_long_name").css("display","flex")
             setTimeout(()=>{$("#too_long_name").fadeOut()},1000)
+        }else if(name.length < 2){
+            $("#too_short_name").fadeIn()
+            $("#too_short_name").css("display","flex")
+            setTimeout(()=>{$("#too_short_name").fadeOut()},1000)
         }else{
             $(".name").html(name)
             $(".change_name_settings_row input").val("")
@@ -251,12 +263,16 @@ function change_name(e){
     }
 }
 
+function entering_game(){
+    console.log($(this))
+}
+
 //LOADING PAGE
-$(document).keypress(()=>{zooming($("#first_level"))})
+$(document).keypress(entering_levels_section)
 setTimeout(()=>{$("#preloader").fadeOut(2000)},1000)
 $("#shop").click(()=>{zooming($('#shop_section'))})
 $("#inventory").click(()=>{zooming($('#inventory_section'))})
-$("#settings").click(()=>{$("#settings_section").fadeIn();nothingClicked = false})
+$(".settings").click(()=>{$("#settings_section").fadeIn();nothingClicked = false})
 
 //SETTINGS
 $("#settings_closing").click(()=>{$("#settings_section").fadeOut();nothingClicked = true})
@@ -278,4 +294,7 @@ $("#yes").click(buyingItems)
 //INVENTORY
 $("#next_arrow_inventory").click(()=>{})
 $("#previous_arrow_inventory").click(()=>{})
-$(".equip_item").click(equip_avatar)
+$(".shop_items_box").click(e => {console.log(e.target)})
+
+//LEVELS
+// $(".levels_boxes").click(entering_game)
