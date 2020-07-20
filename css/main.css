@@ -48,7 +48,7 @@ body{
     height: 100vh;
     position: absolute;
     user-select: none;
-    display: none;
+    /* display: none; */
 }
 #audio{
     position: absolute;
@@ -623,6 +623,7 @@ body{
     flex-wrap: wrap;
     z-index: 0;
     background-image: url("../Images/Levels/level_section_background_1.png");
+    display: none;
 }
 #dancing_cat_in_levels_section{
     position: absolute;
@@ -634,7 +635,7 @@ body{
     position: absolute;
     width: 5vw;
     height: 5vw;
-    right: 5%;
+    right: 2vw;
     top: 2vw;
     background: whitesmoke;
     border-radius: 50%;
