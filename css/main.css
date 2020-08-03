@@ -48,7 +48,7 @@ body{
     height: 100vh;
     position: absolute;
     user-select: none;
-    /* display: none; */
+    display: none;
 }
 #audio{
     position: absolute;
@@ -623,7 +623,8 @@ body{
     flex-wrap: wrap;
     z-index: 0;
     background-image: url("../Images/Levels/level_section_background_1.png");
-    display: none;
+    background-size: 85% 112vh;
+    /* display: none; */
 }
 #dancing_cat_in_levels_section{
     position: absolute;
@@ -641,4 +642,80 @@ body{
     border-radius: 50%;
     cursor: pointer;
 }
+.levels_boxes{
+    width: 6vw;
+    height: 6vw;
+    border-radius: 50%;
+    /* background: linear-gradient(to right,#7F7FD5,#86A8E7,#91EAE4); */
+    background: linear-gradient(to right, #FFEFBA,#FFFFFF);
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    font-size: 2vw;
+    cursor: pointer;
+    /* color: white; */
+}
+.stars_container{
+    width: 100%;
+    height: 40%;
+    display:flex;
+    justify-content:center;
+    align-items: center;
+}
+.stars_container img{
+    width: 25%;
+    height: auto;
+}
+#level_0_btn{
+    top: 60%;
+    left: 1%;
+}
+#level_1_btn{
+    top: 60%;
+    left: 12%;
+}
+#level_2_btn{
+    top: 57%;
+    left: 22%;
+}
+#level_3_btn{
+    top: 40%;
+    left: 19%;
+}
+#level_4_btn{
+    top: 22%;
+    left: 14%;
+}
+#level_5_btn{
+    top: 10%;
+    left: 25%;
+}
+#level_6_btn{
+    top: 5%;
+    left: 37%;
+}
+#level_7_btn{
+    top: 7%;
+    left: 52%;
+}
 
+
+/* ============================================================================== */
+/* ============================================================================== */
+/*                                  TUTORIAL                                      */
+/* ============================================================================== */
+/* ============================================================================== */
+#level_0{
+    width: 100%;
+    height: 100vh;
+    background: red;
+    display: none;
+}
+#level_1{
+    width: 100%;
+    height: 100vh;
+    background: red;
+    display: none;
+}

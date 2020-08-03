@@ -20,11 +20,14 @@ let shopeItemsPrice = Object.keys(shopItems)
 let prices,currentAvatarPreview,currentBuyingItemPriceBox,currentBuyingItemPrice,currentBuyingItem;
 let nothingClicked = true
 let currentAvatarEquiped;
+let levelsAmount = ["level_0_btn", "level_1_btn", "level_2_btn", "level_3_btn", "level_4_btn", "level_5_btn", "level_6_btn", "level_7_btn"]
+let levels_section_melody = new Audio("../Sounds/levels_section_melody.wav")
 
 function initialize(){
     addingShopItems()
     margat()
     $(".shop_pages_container").html(shopeItemsPrice.length + " items")
+    addingLevels()
 }
 initialize()
 
@@ -37,6 +40,13 @@ function addingShopItems(){
         $("#shop_items_wrapper").append(currentItem)
     }
     prices = $(".price p")
+}
+
+function addingLevels(){
+    for(let i in levelsAmount){
+        let currentLevel = `<div class='levels_boxes' id="${levelsAmount[i]}" data-level="level_${i}">${i}<div class"stars_container" style="display:flex;justify-content:space-evenly"><img src="../Images/Levels/uncollected_star.png" width="20%" /><img src="../Images/Levels/uncollected_star.png" width="20%" /><img src="../Images/Levels/uncollected_star.png" width="20%" /></div></div>`
+        $("#levels_section").append(currentLevel)
+    }
 }
 
 function margat(){
@@ -164,6 +174,7 @@ function entering_levels_section(e){
         setTimeout(() => {$("#loading_page").css("display","none")},1000)
         clearInterval(Margat)
         setTimeout(() => {$("#levels_section").fadeIn(1000)},1000)
+        levels_section_melody.play()
     }
 }
 
@@ -263,8 +274,13 @@ function change_name(e){
     }
 }
 
-function entering_game(){
-    console.log($(this))
+function entering_game(level_selected){
+    $("#levels_section").css({transform:"scale(2)",transition: "1s"})
+    $("#levels_section").animate({opacity:0},500)
+    setTimeout(() => {$("#levels_section").css("display","none")},1000)
+    setTimeout(() => {$(`#${level_selected}`).fadeIn(500)},800)
+    levels_section_melody.play()
+
 }
 
 //LOADING PAGE
@@ -294,7 +310,7 @@ $("#yes").click(buyingItems)
 //INVENTORY
 $("#next_arrow_inventory").click(()=>{})
 $("#previous_arrow_inventory").click(()=>{})
-$(".shop_items_box").click(e => {console.log(e.target)})
+// $(".shop_items_box").click(e => {console.log(e.target)})
 
 //LEVELS
-// $(".levels_boxes").click(entering_game)
+$(".levels_boxes").click(function(){let id = $(this).attr("data-level"); entering_game(id)})
